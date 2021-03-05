@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/ktm', function () {
     return view('welcome');
 });
+// Route::get('/hello', function () {
+//     return view('firstpage');
+// });
+
+Route::get('/world', function () {
+    return view('secondpage');
+});
+
+Route::get('/hello','App\Http\Controllers\myController@index');
