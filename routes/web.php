@@ -27,3 +27,5 @@ Route::get('/world', function () {
 Route::get('/hello','App\Http\Controllers\myController@index');
 // to show addproduct form
 route::get('/addproduct','App\Http\Controllers\myController@showproductform');
+//to insert a product
+Route::post('storeproduct','App\Http\Controllers\myController@store')->name('storeproduct');
