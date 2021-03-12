@@ -69,6 +69,14 @@ class myController extends Controller
     return view('showproduct',['showdata'=>$showdata]);
 
     }
+      public function homepage()
+    {
+    
+    $show=Product::orderBy('id','desc')->get();
+    return view('homepage',['show'=>$show]); 
+    //to show multipal value thad is called array
+
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -78,7 +86,8 @@ class myController extends Controller
      */
     public function edit($id)
     {
-        //
+    $product=product::find($id);
+    return view('edit',compact('product'));
     }
 
     /**
@@ -90,7 +99,7 @@ class myController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    
     }
 
     /**
@@ -99,8 +108,15 @@ class myController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        //
+        $product=Product::find($id);
+        if($product->product_image){
+            //to remove image from folder
+            unlink('uploads/products/'.$product->product_image);
+        }
+        $product->delete();
+        $request->session()->flash('msg','Product has been deleted succesfully');
+        return redirect()->back();
     }
 }
