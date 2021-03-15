@@ -14,7 +14,7 @@
 		</div>
 		@endif
 
-	<form method="post" enctype="multipart/form-data" action="">
+	<form method="post" enctype="multipart/form-data" action="{{route('updateproduct',$product->id)}}">
 		@csrf
 		<div class="col-md-6">
 			<label for="productname">Productname</label>
@@ -35,7 +35,7 @@
 		</div>
 		<div class="col-md-6">
 			<label for="image">Product image</label>
-			<input type="file" name="image" class="form-control"><img src="{{asset('uploads/products')}}/{{$product->product_image}}" width="80" height="70">
+			<input type="file" name="image" class="form-control"><img src="{{asset('uploads/products')}}/{{$product->product_image}}" width="80" height="70	">
 		</div>
 		<div  class="col-md-6">
 			<button type="submit" class="btn btn-primary">Update Product</button>

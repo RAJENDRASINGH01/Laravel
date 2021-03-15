@@ -10,7 +10,7 @@
 <body>
 	<div class="container">
 		<h1 class="text-info">Show product</h1>
-    @if(Session::has('msg'))
+    @if(Session::has('msg'));
     <div class="alert alert-success">
     {{Session::get('msg')}}</div>
     @endif
